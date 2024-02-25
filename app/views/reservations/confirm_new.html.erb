@@ -1,0 +1,52 @@
+<%= render "shared/header" %>
+
+<div class="main-container">
+  <div class="container mt-5">
+    <div class="confirm">
+        <div class="row justify-content-center">
+        <div class="col-md-6">
+          <h2 class="text-center">Booking confirmation</h2>
+          <div class="card mt-4">
+            <div class="card-body">
+              <div class="mb-3">
+                <strong>Check In:</strong>
+                <span><%= @reservation.check_in.strftime("%Y/%m/%d") %></span>
+              </div>
+              <div class="mb-3">
+                <strong>Check Out:</strong>
+                <span><%= @reservation.check_out.strftime("%Y/%m/%d") %></span>
+              </div>
+              <div class="mb-3">
+                <strong>Stay Days:</strong>
+                <span><%= @reservation.stay_days %></span>
+              </div>
+              <div class="mb-3">
+                <strong>Number of People:</strong>
+                <span><%= @reservation.num %></span>
+              </div>
+              <div class="mb-3">
+                <strong>Total Fee:</strong>
+                <span><%= number_with_delimiter(@reservation.total_fee) %></span>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-4">If the above information is correct, please press the "Confirm" button.</p>
+
+          <%= form_with model: @reservation, url: reservations_path, method: :post do |f| %>
+            <%= f.hidden_field :room_id, value: @reservation.room_id %>
+            <%= f.hidden_field :check_in, value: @reservation.check_in %>
+            <%= f.hidden_field :check_out, value: @reservation.check_out %>
+            <%= f.hidden_field :stay_days, value: @reservation.stay_days %>
+            <%= f.hidden_field :num, value: @reservation.num %>
+            <%= f.hidden_field :total_fee, value: @reservation.total_fee %>
+            <%= f.submit "Confirm Reservation", class: "btn btn-outline-secondary" %>
+            <%= link_to "Cancel", room_path(@reservation.room), class: "btn btn-outline-secondary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

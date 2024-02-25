@@ -1,0 +1,31 @@
+<%= render "shared/header" %>
+
+<div class="account-container ">
+  <div class="card">
+    <div class="card-text-color card-header">
+      <h1 class="card-title text-center">Account Information</h1>
+    </div>
+    <div class="card-body">
+      <div class="row mb-5">
+        <div class="col text-start">
+          <%= link_to "Account", user_path(current_user), class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+        </div>
+        <div class="col text-end">
+          <%= link_to "profile", profile_path, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <h3 class="mb-4">Account </h3>
+        <p><strong>Email:</strong> <%= current_user.email %></p>
+        <p><strong>Password:</strong> ********</p>
+      </div>
+
+      <div class="d-grid gap-2 col-6 mx-auto mt-4 mb-3">
+        <%= link_to "Edit Your Account", edit_user_registration_path, class: "btn btn-sm btn-outline-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

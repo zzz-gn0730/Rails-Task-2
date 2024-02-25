@@ -1,0 +1,49 @@
+<%= render "shared/header" %>
+
+<div class="main_container ">
+  <div class="container mt-5">
+    <h1 class="text-center">Search Results</h1>
+
+    <p class="text-center">Total rooms found: <%= @total_count %></p>
+
+    <div class="row justify-content-center mb-3">
+      <%= form_tag search_index_path, method: :get, class: "d-flex justify-content-center" do %>
+        <div class="input-group mb-3">
+          <%= text_field_tag :query, params[:query], class: "form-control me-2 w-auto", placeholder: "Search by room name or detail" %>
+            <%= text_field_tag :location, params[:location], class: "form-control me-2 w-auto",  placeholder: "Search by location" %>
+          <%= submit_tag "Search", class: "btn btn-outline-secondary" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row justify-content-center">
+      <% @rooms.each do |room| %>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <% if room.avatar? %>
+              <%= image_tag room.avatar_url, class: "card-img-top" %>
+            <% else %>
+              <%= image_tag "room-default-image.png", class: "card-img-top" %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to room.name, room_path(room), class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %></h5>
+              <p class="card-text">Address: <%= room.address %></p>
+              <p class="card-text">Detail: <%= room.detail %></p>
+              <p class="card-text">Fee: <%= number_with_delimiter(room.fee) %></p>
+              <p class="card-text">Created date: <%= room.created_at.strftime("%Y/%m/%d") %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="col-mb-6 text-center">
+      <%= paginate @rooms %>
+      <%= link_to "Return to top page", root_path, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

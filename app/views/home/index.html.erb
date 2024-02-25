@@ -1,0 +1,69 @@
+<%= render "shared/header" %>
+
+<main>
+  <div class="main-wrapper">
+    <div class="search-container">
+      <div class="search">
+        <%= form_tag search_index_path, method: :get, class: "d-flex justify-content-center" do %>
+          <%= text_field_tag :query, params[:query], class: "form-control me-2 w-auto", placeholder: "Search by room name or detail" %>
+          <%= text_field_tag :location, params[:location], class: "form-control me-2 w-auto", placeholder: "Search by location" %>
+          <%= submit_tag "Search", class: "btn btn-outline-secondary" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="main-image-container">
+      <div class="main_image">
+        <div style="position: relative; display: inline-block;">
+          <%= image_tag("hiking-man-with-backpack-walking-in-forest.jpg")%>
+          <div style="position: absolute; bottom: 5px; right: 5px; background-color: rgba(255, 255, 255, 0.7); padding: 5px; font-size: 7px;">
+            <a href="https://jp.freepik.com/free-photo/hiking-man-with-backpack-walking-in-forest_13181323.htm#query=%E6%97%85%E8%A1%8C%20%E7%A9%BA%20%E7%94%B0%E8%88%8E%20%E9%81%93%20%E5%BE%8C%E3%82%8D%E5%A7%BF&position=16&from_view=search&track=ais&uuid=db0dd38c-ab8e-4bb2-ba22-30e65508d5bf" style="text-decoration: none; color: black;">著作者:tawatchai07</a>/出典:Freepik
+          </div>
+        </div>
+        <div class="first-view-text">Let's go on your own journey</div>
+      </div>
+    </div>
+    <div class="area-text">
+      <h2>Recommended area</h2>
+    </div>
+    <div class="area-image-container">
+      <div class="area-image">
+        <div style="position: relative; display: inline-block;">
+          <%= link_to image_tag("traffic-and-tokyo-cityscape-at-night-japan.jpg"), search_index_path(location: "東京都"), class: "area-link" %>
+          <div style="position: absolute; bottom: 5px; right: 5px; background-color: rgba(255, 255, 255, 0.7); padding: 5px; font-size: 5px;">
+            <a href="https://jp.freepik.com/free-photo/traffic-and-tokyo-cityscape-at-night-japan_10695358.htm#query=%E6%9D%B1%E4%BA%AC&position=23&from_view=search&track=ais&uuid=5e041ce6-f806-48c3-9851-f190f42896fc" style="text-decoration: none; color: black;">著作者:tawatchai07/出典:Freepik</a>
+          </div>
+        </div>
+        <div class="area-image-text">Tokyo</div>
+      </div>
+      <div class="area-image">
+        <div style="position: relative; display: inline-block;">
+          <%= link_to image_tag("cherry-blossoms-and-castle-in-osaka-japan.jpg"), search_index_path(location: "大阪府"), class: "area-link" %>
+          <div style="position: absolute; bottom: 5px; right: 5px; background-color: rgba(255, 255, 255, 0.7); padding: 5px; font-size: 5px;">
+            <a href="https://jp.freepik.com/free-photo/cherry-blossoms-and-castle-in-osaka-japan_10824422.htm#query=%E5%A4%A7%E9%98%AA%E5%9F%8E&position=12&from_view=keyword&track=ais&uuid=2818685b-bb84-4f21-9d19-ac9de37752e2" style="text-decoration: none; color: black;">著作者:tawatchai07</a>/出典:Freepik
+          </div>
+        </div>
+        <div class="area-image-text">Osaka</div>
+      </div>
+      <div class="area-image">
+        <div style="position: relative; display: inline-block;">
+          <%= link_to image_tag("woman-wearing-japanese-traditional-kimono-with-umbrella-at-yasaka-pagoda-and-sannen-zaka-street-in-kyoto-japan.jpg"), search_index_path(location: "京都府"), class: "area-link" %>
+          <div style="position: absolute; bottom: 5px; right: 5px; background-color: rgba(255, 255, 255, 0.7); padding: 5px; font-size: 5px;">
+            <a href="https://jp.freepik.com/free-photo/woman-wearing-japanese-traditional-kimono-with-umbrella-at-yasaka-pagoda-and-sannen-zaka-street-in-kyoto-japan_10824368.htm#page=2&query=%E7%A5%87%E5%9C%92&position=17&from_view=keyword&track=ais&uuid=420f2202-6306-4a89-a4da-94d5894c5fe0" style="text-decoration: none; color: black;">著作者:tawatchai07</a>/出典:Freepik
+          </div>
+        </div>
+        <div class="area-image-text">kyoto</div>
+      </div>
+      <div class="area-image">
+        <div style="position: relative; display: inline-block;">
+          <%= link_to image_tag("sapporo-4848854_640.jpg"), search_index_path(location: "札幌"), class: "area-link" %>
+          <div style="position: absolute; bottom: 5px; right: 5px; background-color: rgba(255, 255, 255, 0.7); padding: 5px; font-size: 5px;">
+            <a href="https://pixabay.com/ja/users/t_watanabe-8471648/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4848854" style="text-decoration: none; color: black;">Toshiharu Watanabe</a>による<a href="https://pixabay.com/ja//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4848854" style="text-decoration: none; color: black;">Pixabay</a>からの画像
+          </div>
+        </div>
+        <div class="area-image-text">Sapopro</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%= render "shared/footer" %>

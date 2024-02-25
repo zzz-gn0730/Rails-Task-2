@@ -1,0 +1,62 @@
+<%= render "shared/header" %>
+
+<div Class="main_container">
+
+  <div class="list-title">
+    <h3>List of facilities</h3>
+  </div><br>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name of facility</th>
+        <th>Introduction</th>
+        <th>Total fee</th>
+        <th>Check in</th>
+        <th>Check out</th>
+        <th>Reservation date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr>
+          <td class="align-middle">
+            <% if reservation.room.avatar? %>
+              <%= image_tag reservation.room.avatar_url, size: "130x80" %>
+            <% else %>
+              <%= image_tag "room-default-image.png", size: "130x80" %>
+            <% end %>
+          </td>
+          <td class="align-middle">
+            <%= link_to reservation.room.name, room_path(reservation.room), class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+          </td>
+          <td class="align-middle">
+            <%= reservation.room.detail %>
+          </td>
+          <td class="align-middle">
+            <%= number_with_delimiter(reservation.total_fee.floor )%>
+          </td>
+          <td class="align-middle">
+            <%= reservation.check_in.strftime("%Y/%m/%d") %>
+          </td>
+          <td class="align-middle">
+            <%= reservation.check_out.strftime("%Y/%m/%d") %>
+          </td>
+          <td class="align-middle">
+            <%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %>
+          </td>
+          <td class="align-middle">
+            <%= link_to "Rebooking", edit_reservation_path(reservation), class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+          </td>
+          <td class="align-middle">
+            <%= link_to "Delete", reservation, method: :delete, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= render "shared/footer" %>
